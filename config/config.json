@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "Hikarugi1",
-    "database": "passport_demo",
-    "host": "127.0.0.1",
+    "username": "b55c9a90f61ab1",
+    "password": "76077be9",
+    "database": "us-cdbr-east-02.cleardb.com",
+    "host": "heroku_28fc64c609b194c",
     "dialect": "mysql"
   },
   "test": {
