@@ -50,4 +50,26 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.get("/api/profile", (req, res) => {
+    if(!req.user){ // Not logged in
+      res.json({});
+    }
+    res.json({
+      email: req.user.email,
+      username: req.user.name,
+      sex: req.user.sex,
+      species: req.user.species,
+      age: req.user.age
+    });
+  });
+
+  app.get("/api/search", (req, res) => {
+    if(!req.user){
+      res.json({});
+    }
+    res.json({
+      
+    });
+  });
 };

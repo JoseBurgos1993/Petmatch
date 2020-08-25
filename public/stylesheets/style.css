@@ -2,3 +2,9 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+header{
+  background-color: brown;
+}
+h1{
+  color: greenyellow;
+}
