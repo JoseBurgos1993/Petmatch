@@ -1,3 +1,5 @@
+<h1>CREATE PAGE</h1>
+
 
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -11,8 +13,42 @@
         <h2>Sign Up Form</h2>
         <form class="signup">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
+            <label for="username">User Name</label>
+            <input type="username" class="form-control" id="username" placeholder="Bill Bobson">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="placeholder@email.com">
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="age" class="form-control" id="age" placeholder="1">
+          </div>
+
+          <div class="form-group">
+            <label for="sex">Sex</label>
+            <select class="form-control" id="sex">
+              <option value="" selected disabled>Please select</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="species">Species Type</label>
+            <select class="form-control" id="species">
+              <option selected disabled>Please select</option>
+              <option>Dog</option>
+              <option>Cat</option>
+              <option>Reptile</option>
+              <option>Bug</option>
+              <option>Bird</option>
+              <option>Aquatic</option>
+              <option>Small Mammal</option>
+              <option>Large Mammal</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
@@ -31,4 +67,61 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/signup.js"></script>
+<script>
+  $(document).ready(() => {
+    // Getting references to our form and input
+    const signUpForm = $("form.signup");
+    const userName = $("input#username");
+    const emailInput = $("input#email");
+    const ageInput = $("input#age");
+    const sexInput = $("#sex");
+    const speciesInput = $("#species");
+    const passwordInput = $("input#password-input");
+    // When the signup button is clicked, we validate the email and password are not blank
+    signUpForm.on("submit", event => {
+      event.preventDefault();
+      console.log("PRESSED SUBMIT");
+      const userData = {
+        username: userName.val().trim(),
+        email: emailInput.val().trim(),
+        age: ageInput.val().trim(),
+        sex: sexInput.val(),
+        species: speciesInput.val(),
+        password: passwordInput.val().trim()
+      };
+      if (!userData.email || !userData.password|| !userData.sex|| !userData.username|| !userData.species || !userData.age || isNaN(userData.age)) {
+        return;
+      }
+      // If we have an email and password, run the signUpUser function
+      signUpUser(userData.username, userData.email, userData.age, userData.sex, userData.species,userData.password);
+      userName.val("");
+      emailInput.val("");
+      ageInput.val("");
+      sexInput.val("");
+      passwordInput.val("");
+      speciesInput.val("");
+    });
+
+    // Does a post to the signup route. If successful, we are redirected to the members page
+    // Otherwise we log any errors
+    function signUpUser(username, email, age, sex, species, password) {
+      $.post("/api/signup", {
+        username: username,
+        email: email,
+        age: age,
+        sex: sex,
+        species: species,
+        password: password
+      }).then(() => {
+        window.location.replace("/profile");
+        // If there's an error, handle it by throwing up a bootstrap alert
+      }).catch(handleLoginErr);
+    }
+
+    function handleLoginErr(err) {
+      $("#alert .msg").text(err.responseJSON);
+      $("#alert").fadeIn(500);
+    }
+  });
+
+</script>

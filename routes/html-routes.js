@@ -18,6 +18,7 @@ module.exports = function(app) {
     if(req.user){
       res.render("profile", {layout: "index"});
     }
+    res.render("create", {layout: "index"});
   });
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page

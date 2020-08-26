@@ -19,17 +19,20 @@ app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
 app.set("view engine", "handlebars");
+/*
 app.engine("handlebars",handlebars({
-  layoutsDir: __dirname + "/views/layouts"
+  layoutsDir: __dirname + "/views/layouts",
+  defaultLayout: 'index'
 }));
+*/
+app.engine("handlebars", handlebars({ defaultLayout: "index"}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
 
-//app.engine("handlebars", exphbs({ defaultLayout: "main"}));
-//require("./routes/html-routes.js")(app);
-//require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {

@@ -13,21 +13,30 @@ module.exports = function(app) {
       id: req.user.id
     });
   });
-
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
     db.User.create({
+      name: req.body.username,
+      age: req.body.age,
+      sex: req.body.sex,
+      species: req.body.species,
       email: req.body.email,
       password: req.body.password
     })
-      .then(() => {
-        res.redirect(307, "/api/login");
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
+    //.then(db.Profile.create({
+    //  name: req.body.username,
+    //  age: req.body.age,
+    //  sex: req.body.sex,
+    //  species_id: req.body.species
+    //}))
+    .then(() => {
+      res.redirect(307, "/api/login");
+    }).catch(err => {
+      res.status(401).json(err);
+    });
+    
   });
 
   // Route for logging user out
@@ -45,31 +54,13 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
+        name: req.user.name,
+        age: req.user.age,
+        sex: req.user.sex,
+        species: req.user.species,
         email: req.user.email,
         id: req.user.id
       });
     }
-  });
-
-  app.get("/api/profile", (req, res) => {
-    if(!req.user){ // Not logged in
-      res.json({});
-    }
-    res.json({
-      email: req.user.email,
-      username: req.user.name,
-      sex: req.user.sex,
-      species: req.user.species,
-      age: req.user.age
-    });
-  });
-
-  app.get("/api/search", (req, res) => {
-    if(!req.user){
-      res.json({});
-    }
-    res.json({
-      
-    });
   });
 };
