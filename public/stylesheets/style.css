@@ -1,4 +1,28 @@
-form.signup,
-form.login {
+form.signup, form.login {
   margin-top: 50px;
+}
+
+#login fieldset{
+  display: flex;
+  justify-content: center;
+}
+
+#login legend {
+  font-size: 32px;
+  margin-bottom: 1em;
+}
+
+#login label {
+  margin-left: 2em;
+  font-weight: bold;
+}
+
+#login input {
+  margin-left: 2em;
+  width: 75%;
+}
+
+.modal {
+  position: relative;
+  top: 50%;
 }

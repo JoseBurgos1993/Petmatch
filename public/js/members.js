@@ -5,3 +5,7 @@ $(document).ready(() => {
     $(".member-name").text(data.email);
   });
 });
+
+$(window).on("load", function () {
+  $('#modal').modal('show');
+})
