@@ -1,35 +1,41 @@
+<section class="container-fluid bg">
+    <section class="row justify-content-center">
+        <section class="col-12 col-sm-6 col-md-3">
+            <form class="form-comtainer">
+                <img class="imgprofile" src="/img/pexels-alina-vilchenko-3218841.jpg">
+                <button type="submit" class="btn btn-primary btn-block photo">Upload Photo</button>
+                <h2>Name: <span class="name"></span></h2>
+                <h3>Age: <span class="age"></span> Years</h3>
+                <h3>Sex: <span class="sex"></span></h3>
+                <h3>Species: <span class="species"></span></h3>
+                <button id="message">MESSAGE TEST</button>
+                <a class="navbar-brand" href="/logout">Logout</a>
+            </form>
+        </section>
+    </section>
+</section>
 
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-    </div>
-  </div>
-</nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="name"></span></h2>
-        <h3>Age: <span class="age"></span> Years</h3>
-        <h3>Sex: <span class="sex"></span></h3>
-        <h3>Species: <span class="species"></span></h3>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(() => {
-      // This file just does a GET request to figure out which user is logged in
-      // and updates the HTML on the page
-      $.get("/api/user_data").then(data => {
-        $(".name").text(data.name);
-        $(".age").text(data.age);
-        $(".sex").text(data.sex);
-        $(".species").text(data.species);
+<!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+-->
+<script>
+  $(document).ready(() => {
+    // This file just does a GET request to figure out which user is logged in
+    // and updates the HTML on the page
+    $.get("/api/user_data").then(data => {
+      $(".name").text(data.name);
+      $(".age").text(data.age);
+      $(".sex").text(data.sex);
+      $(".species").text(data.species);
+    });
+    $("#message").on("click", function(event){
+      $.post("/api/send-email",{
+        email: "jose.burgos.me@gmail.com",
+        subject: "TESTING PROJECT 2",
+        text: "HELLO Worlds"
+      }).then(function(){
+        console.log("Email Successfully Sent!");
       });
     });
-
-  </script>
+  });
+</script>
