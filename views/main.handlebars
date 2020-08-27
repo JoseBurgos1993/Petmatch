@@ -1,0 +1,26 @@
+<button id="create">Create New Account</button>
+<button id="login">Login To Existing Account</button>
+
+<script>
+$(function() {
+    $("#create").on("click", function(event) {
+        event.preventDefault();
+        console.log("Beginning to create new account...");
+        window.location.replace("/create");
+        //$.get("/create").then(function() {
+        //    //location.reload();
+        //});
+    });
+  
+    $("#login").on("click", function(event) {
+        event.preventDefault();
+        console.log("Existing user is trying to log in...");
+        window.location.replace("/login");
+        //$.ajax("/login", {
+        //    type: "GET"
+        //}).then(function() {
+        //    //location.reload();
+        //});
+    });
+});
+</script>

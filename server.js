@@ -1,9 +1,8 @@
 // Requiring necessary npm packages
 require("dotenv").config();
 const express = require("express");
+const handlebars = require("express-handlebars");
 const session = require("express-session");
-
-// Requiring passport as we've configured it
 const passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
@@ -19,10 +18,19 @@ app.use(express.static("public"));
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
+app.set("view engine", "handlebars");
+/*
+app.engine("handlebars",handlebars({
+  layoutsDir: __dirname + "/views/layouts",
+  defaultLayout: 'index'
+}));
+*/
+app.engine("handlebars", handlebars({ defaultLayout: "index"}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
+
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
