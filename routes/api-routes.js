@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-const nodeMailer = require("nodeMailer");
+const nodemailer = require("nodemailer");
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -46,21 +46,23 @@ module.exports = function(app) {
   });
 
   app.post('/api/send-email', function (req, res) {
-    let transporter = nodeMailer.createTransport({
+    let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
         auth: {
             // should be replaced with real sender's account
-            user: 'donotreply.to.PetMatch@gmail.com',
-            pass: '1+sCH33P\\/\/ine'
+            //user: 'bobbillson68@gmail.com',
+            //pass: "Warhammer40k1"
+            user: "donotreply.to.petmatch@gmail.com",
+            pass: "Thankst13"
         }
     });
     let mailOptions = {
         // should be replaced with real recipient's account
         to: req.body.email,//'patelcatalina@gmail.com',
         subject: req.body.subject,
-        text: req.body.message
+        text: req.body.text
     };
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
@@ -70,6 +72,18 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/searchAll", function(req,res){
+    db.User.get
+    //db.User.
+    /*
+    User.selectAll(function(data){
+        const hbsObject = {
+            users: data
+        };
+        console.log(hbsObject);
+        res.render("search", hbsObject);
+    });*/
+  });
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
