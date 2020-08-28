@@ -26,6 +26,10 @@ form.signup, form.login {
   position: relative;
   top: 50%;
 }
+.modal-content {
+  height:500px;
+  overflow:auto;
+}
 
 header {
   background-color: brown;

@@ -7,23 +7,23 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
   app.get("/", (req, res) => {
     if (req.user) {
-      res.redirect("/profile");
-      //res.render("profile", {layout: "index"});
+      //res.redirect("/profile");
+      res.render("profile", {layout: "index"});
     }
     res.render("main", {layout: "index"});
   });
   app.get("/create", (req, res) => {
     if(req.user){
-      res.redirect("/profile");
-      //res.render("profile", {layout: "index"});
+      //res.redirect("/profile");
+      res.render("profile", {layout: "index"});
     }
     res.render("create", {layout: "index"});
   });
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the profile page
     if (req.user) {
-      res.redirect("/profile");
-      //res.render("profile", {layout: "index"});
+      //res.redirect("/profile");
+      res.render("profile", {layout: "index"});
     }
     res.render("login", {layout: "index"});
   });
