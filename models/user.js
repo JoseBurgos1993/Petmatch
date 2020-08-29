@@ -17,31 +17,10 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
-    // The password cannot be null
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    }/*,
-    selectAll: function(cb) {
-      orm.selectAll(function(res){
-        cb(res);
-      });
-    },
-    selectBySpecies: function(value, cb){
-      orm.selectBySpecies(value, function(res){
-        cb(res);
-      });
-    },
-    selectByAge: function(min, max, cb){
-      orm.selectByAge(min, max, function(res){
-        cb(res);
-      });
-    },
-    selectByBoth: function(value, min, max, cb){
-      orm.selectByBoth(value, min, max, function(res){
-        cb(res);
-      });
-    }*/
+    }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
