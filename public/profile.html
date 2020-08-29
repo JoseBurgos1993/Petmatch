@@ -48,7 +48,7 @@
                 <div class="col-lg-12">
                   <form class="form-horizontal" id="login">
                     <fieldset>
-                      <legend>Welcome back</legend>
+                      <legend>Welcome Back</legend>
                       <div class="form-group">
                         <label for="uname">Username:</label>
                         <input class="form-control" type="text" placeholder="Username" name="uname" required>
@@ -56,18 +56,22 @@
                       <div class="form-group">
                         <label for="psw">Password:</label>
                         <input class="form-control" type="password" placeholder="Password" name="psw" required>
+                        <span class="psw" id="forgot-psw"></span>Forgot <a
+                          href="mailto:support@petmatch.com?subject=Reset password for my PetMatch.com">password?</a></span>
                       </div>
-                      <label for="remember"><input type="checkbox" checked="checked" name="remember">Remember
-                        me</label>
-                      <button type="submit">Login</button>
+                      <!-- <label for="remember">
+                        <input type="checkbox" checked="checked" name="remember">Remember
+                        me</input>
+                      </label> -->
+                      <div class="form-group">
+                        <button type="submit">Login</button>
+                        <button type="menu">Register</button>
+                      </div>
                     </fieldset>
                   </form>
-                  <button type="menu">Register</button>
                 </div>
               </div>
               <div class="container">
-                <span class="psw"></span>Forgot <a
-                  href="mailto:support@petmatch.com?subject=Reset password for my PetMatch.com">password?</a></span>
               </div>
             </div>
           </div>

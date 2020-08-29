@@ -17,14 +17,40 @@ form.signup, form.login {
   font-weight: bold;
 }
 
+#forgot-psw {
+  margin-left: 2em;
+}
+
 #login input {
   margin-left: 2em;
   width: 75%;
+  vertical-align: bottom;
+}
+
+#login input[type=checkbox] {
+  /* display: inline-block; */
+  float: inline-start;
+  margin: 0;
+  padding: 0;
+  width: max-content;
+  height: max-content;
+}
+
+#login .form-group button {
+  margin-right: 3em;
+  margin-left: 3em;
+  background-color: rgb(16, 75, 202);
+  color: white;
+  padding: .5em;
 }
 
 .modal {
   position: relative;
   top: 50%;
+}
+
+.modal-backdrop {
+  background-image: url(../../assets/collage.png);
 }
 
 header {
