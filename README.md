@@ -1,5 +1,5 @@
 # Petmatch: Friendship App for Pet Lovers
-<<Still under construction>>
+Still under construction
 
 # Summary
 Petmatch is a website where users create an account for their pet. They can customize their page and list likes, dislikes, interests, etc. The user can then search for other users and try to "match" with them. A "match" occurs when both users have tried matching with eachother. Once this happens, both users are free to message each other and possibly plan events like taking their dogs to the park.
@@ -29,10 +29,10 @@ and run npm i in the cloned repository's root directory to install the node modu
 If everything worked correctly, you should be able to see the landing page when navigating to localhost:3000.
 
 # Structure
-<<TODO>>
+TODO
 
 # Usage
-<<TODO>>
+TODO
 
 # Contributions
 Your contribution is most welcome! Please refer to the contributing guidelines when making contributions to this project.
